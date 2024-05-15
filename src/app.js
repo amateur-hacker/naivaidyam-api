@@ -17,16 +17,17 @@ const PORT = process.env.PORT;
 app.use(responseMiddleware());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// const corsOptions = {
-//   origin: "http://localhost:5173",
-//   credentials: true,
-// };
 
-app.use(cors());
+const corsOptions = {
+  origin: "https://naivaidyam.vercel.app",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
-  res.send("<h1>Hello from Authentication api!</h1>");
+  res.send("<h1>Hello from Naivaidyam API!</h1>");
 });
 
 app.use("/v1/auth", authRoutes);

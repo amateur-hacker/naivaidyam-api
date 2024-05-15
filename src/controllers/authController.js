@@ -60,7 +60,7 @@ export const login = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.cookie("authToken", token, { httpOnly: true });
+    res.cookie("authToken", token);
     res.successResponse({
       message: "Login successful",
     });
