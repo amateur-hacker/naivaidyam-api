@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: ["https://naivaidyam.vercel.app/", "http://localhost:5173"],
+  origin: "https://naivaidyam.vercel.app",
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
   credentials: true,
 };
