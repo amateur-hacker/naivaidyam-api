@@ -43,7 +43,7 @@ app.use(function (req, res, next) {
   var allowedDomains = [
     "https://naivaidyam.vercel.app",
     "http://localhost:5173",
-    "https://naivaidyam-api.vercel.app",
+    "https://vercel.com",
   ];
   var origin = req.headers.origin;
   if (allowedDomains.indexOf(origin) > -1) {
