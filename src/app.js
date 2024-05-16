@@ -24,21 +24,21 @@ app.use(responseMiddleware());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// const whitelist = ["https://naivaidyam.vercel.app", "http://localhost:5173"];
-//
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (whitelist.indexOf(origin) !== -1) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error("Not allowed by CORS"));
-//     }
-//   },
-//   methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-//   credentials: true,
-// };
-//
-// app.use(cors(corsOptions));
+const whitelist = ["https://naivaidyam.vercel.app", "http://localhost:5173"];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  // methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+  // credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
