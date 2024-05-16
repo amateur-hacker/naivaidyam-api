@@ -15,11 +15,11 @@ const PORT = process.env.PORT;
 //   next();
 // });
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "*");
+//   next();
+// });
 app.use(responseMiddleware());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
