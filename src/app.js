@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 const whitelist = [
   "https://naivaidyam.vercel.app",
   "http://localhost:5173",
-  "https://naivaidyam-api.vercel.app",
+  "https://vercel.com",
 ];
 
 const corsOptions = {
