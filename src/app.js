@@ -14,12 +14,18 @@ const PORT = process.env.PORT;
 //   req.defaultErrorStatusCode = 400;
 //   next();
 // });
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
 app.use(responseMiddleware());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 const corsOptions = {
-  origin: "https://naivaidyam.vercel.app",
+  origin: "http://localhost:5173",
   credentials: true,
 };
 
@@ -30,7 +36,7 @@ app.get("/", (req, res) => {
   res.send("<h1>Hello from Naivaidyam API!</h1>");
 });
 
-app.use("/v1/auth", authRoutes);
+app.use("/api/v1/auth", authRoutes);
 
 (async () => {
   try {
