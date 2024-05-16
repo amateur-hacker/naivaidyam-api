@@ -24,7 +24,11 @@ app.use(responseMiddleware());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const whitelist = ["https://naivaidyam.vercel.app", "http://localhost:5173"];
+const whitelist = [
+  "https://naivaidyam.vercel.app",
+  "http://localhost:5173",
+  "https://naivaidyam-api.vercel.app",
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -39,29 +43,28 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(function (req, res, next) {
-  var allowedDomains = [
-    "https://naivaidyam.vercel.app",
-    "http://localhost:5173",
-    "https://vercel.com",
-  ];
-  var origin = req.headers.origin;
-  if (allowedDomains.indexOf(origin) > -1) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
-  }
-
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-  );
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type, Accept",
-  );
-  res.setHeader("Access-Control-Allow-Credentials", true);
-
-  next();
-});
+// app.use(function (req, res, next) {
+//   var allowedDomains = [
+//     "https://naivaidyam.vercel.app",
+//     "http://localhost:5173",
+//   ];
+//   var origin = req.headers.origin;
+//   if (allowedDomains.indexOf(origin) > -1) {
+//     res.setHeader("Access-Control-Allow-Origin", origin);
+//   }
+//
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "X-Requested-With,content-type, Accept",
+//   );
+//   res.setHeader("Access-Control-Allow-Credentials", true);
+//
+//   next();
+// });
 app.use(cookieParser());
 
 app.get("/", (req, res) => {
